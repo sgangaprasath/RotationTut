@@ -26,19 +26,19 @@ colback=alg1!10,colframe=alg1!90, center, fonttitle=\bfseries, title=Example~\th
 \newtcolorbox[auto counter]{algBox}[2][]{%
 colframe=alg1!80,colback=alg1!10, center, fonttitle=\bfseries, title=Algorithm~\thetcbcounter: #2,#1}
 
-\definecolor{alg1}{RGB}{250, 104, 139}
+\definecolor{alg1}{rgb}{0.0, 0.46, 1.0}
 \definecolor{alg2}{RGB}{9, 166, 75}
 \definecolor{alg3}{RGB}{124,198,137}
 
 \definecolor{greenish}{RGB}{4,191,85}
 \definecolor{reddish}{RGB}{174,12,48}
-\definecolor{blueish}{rgb}{0.12, 0.56, 1.0}
-\definecolor{magenta}{RGB}{250, 104, 139}
+\definecolor{blueish}{rgb}{0.0, 0.46, 1.0}
+\definecolor{magenta}{RGB}{250, 54, 139}
 \hypersetup{
 colorlinks   = true, %Colours links instead of ugly boxes
-urlcolor     = magenta, %Colour for external hyperlinks
+urlcolor     = blueish, %Colour for external hyperlinks
 linkcolor    = greenish, %Colour of internal links
-citecolor   = blueish %Colour of citations
+citecolor   = magenta %Colour of citations
 }
 
 \def\tvec{\vec{\mathbf{t}}}
@@ -83,7 +83,7 @@ citecolor   = blueish %Colour of citations
 \def\vh{\hat{\mathbf{v}}}
 \def\nh{\hat{\mathbf{n}}}
 
-\title{A primer on rotations -- from complex numbers to quaternions}
+\title{Rotations -- from complex numbers to quaternions}
 \author{A Mohanraj, and S Ganga Prasath\footnote{\href{emailto:sgangaprasath@smail.iitm.ac.in}{sgangaprasath@smail.iitm.ac.in}} \\
 Department of Applied Mechanics and Biomedical Engineering,\\
 Indian Institute of Technology Madras, Chennai 600 036.}
@@ -94,7 +94,7 @@ Indian Institute of Technology Madras, Chennai 600 036.}
 
 \maketitle
 \begin{abstract}
-Rotation is one of the fundamental operations of geometry. It provides a way to transform vectors from one location to another while hinged with respect to a pre-defined axis. In this first part of the two part primer we introduce this simple yet often confusing geometric operation in 2D and 3D. We start with the complex number representation of the rotation operation in 2D and its connection to the standard matrix version. Then we discuss the Euler-angle representation of rotation of vector basis, their extrinsic and intrinsic forms. Ultimately we introduce quaternions, which are the natural extension of complex numbers to 3D. In the process, we also look at Gimbol locking, an intrinsic berrier in Euler-angle represetation. Each concept discussed is explained with a worked out example and a supplemental \texttt{python}--code that numerically implements these examples.
+Rotation is one of the fundamental operations of geometry. It provides a way to transform vectors from one location to another while hinged with respect to a pre-defined axis. In this first part of the two part primer we introduce this simple yet often confusing geometric operation in 2D and 3D. We start with the complex number representation of the rotation operation in 2D and its connection to the standard matrix version. Then we discuss the Euler-angle representation of rotation of vector basis, their extrinsic and intrinsic forms. Ultimately we introduce quaternions, which are the natural extension of complex numbers to 3D. In the process, we also look at Gimbol locking, an intrinsic berrier in Euler-angle represetation. Each concept discussed is explained with a worked out example and a supplemental \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{\texttt{python}--code} that numerically implements these examples.
 \end{abstract}
 
 
@@ -186,7 +186,7 @@ We can express a complex number $z = re^{i\theta}$ in cartesian coordinates as v
 
 
 \subsection{Rotating an object}
-We have so far seen how to rotate a vector with respect to origin and how vectors behave in rotated coordinate systems. The last application of rotation matrix is to rotate an object such as a square or a triangle. The rotation of the object translates essentially to rotation of all the vectors defined within the boundary of the object. In the schematic shown in Fig.~\ref{fig:schm2D}$(c)$, the triangular object is defined by the region bounded by the edges connecting the vertices $A, B, C$. Rotating this translates to rotating all the vectors inside this boundary. However, because of the properties of the rotation matrix (discussed in the ensuing sub-section), it is sufficient to rotate the vertices along. Thus rotating $A$ to $A'$, $B$ to $B'$, $C$ to $C'$ by an angle $\phi$ and connecting them by straight lines is equivalent to rotating the triangle. See the \texttt{python}-code for an implementation of this rotation.
+We have so far seen how to rotate a vector with respect to origin and how vectors behave in rotated coordinate systems. The last application of rotation matrix is to rotate an object such as a square or a triangle. The rotation of the object translates essentially to rotation of all the vectors defined within the boundary of the object. In the schematic shown in Fig.~\ref{fig:schm2D}$(c)$, the triangular object is defined by the region bounded by the edges connecting the vertices $A, B, C$. Rotating this translates to rotating all the vectors inside this boundary. However, because of the properties of the rotation matrix (discussed in the ensuing sub-section), it is sufficient to rotate the vertices along. Thus rotating $A$ to $A'$, $B$ to $B'$, $C$ to $C'$ by an angle $\phi$ and connecting them by straight lines is equivalent to rotating the triangle. See the \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{\texttt{python}--code} for an implementation of this rotation.
 
 \subsection{Properties of rotation matrix in 2D}
 Rotation matrices, $\R$ in 2D satisfy the following important properties:
@@ -205,8 +205,8 @@ Euler angles are a set of 3 angles, often represented by $\{\psi, \theta, \phi\}
 
 \begin{figure}[t!]
   \centering
-  \includegraphics[width=\textwidth]{figs/figExtInt.png}
-  \caption{Figure describes 2 ways of 3 consecutive rotations that we can that we can use to move from one orientation to other, first one is extrinsic roation here subsequent roation is performed about a fixed axis,while in intrinsic roation the roation are done about a moving basis.Here , the point ot be noted is that 3 roations taken about a fixed axis yields same result as 3 roations done in opposite order about a oving frame.}
+  \includegraphics[width=\textwidth]{figs/figExtInt.jpg}
+  \caption{Schematic shows 2 ways of performing consecutive rotations to transform from one orientation to the other i.e., extrinsic and intrinsic rotations. Extrinsic rotation is performed about a fixed global axes, while intrinsic rotation about a moving axes that transforms with the object. It is important to note that rotations performed in extrinsic and intrisic form provide the same result (however the order of performing the operation is reversed, as discussed in the main text). Please see the linked \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{\texttt{python}--code} for an example.}
   \label{fig:eulAng3D}
 \end{figure}
 
@@ -256,7 +256,7 @@ Consider a vector $\v$ with components in $\eh_i$ coordinate basis $\{ v_1, v_2,
 \begin{figure}[t!]
   \centering
   \includegraphics[width=0.75\textwidth]{figs/figRodg.png}
-  \caption{Schematic describes the rotation of vector $\v$ represented by $\vec{OP}$ about $\nh$ by an angle $\phi$ thereby becoming the new vector $\vt$, this is also used to rotate a rigid body as seen in this schematic.}
+  \caption{Schematic describes the rotation of vector $\v$ represented by $\vec{OP}$ about $\nh$ or $\vec{ON}$ by an angle $\phi$ thereby becoming the new vector $\vt / \vec{OP'}$. This approach is also used to rotate a rigid body as shown here and the matrix to perform such a rotation in Eq.~\ref{eq:rodgForm} is given the name Rodrigues formula.}
   \label{fig:rodg}
 \end{figure}
 We have seen that simple rotations about $\eh_i$ can be performed by $\R_i$, as it extends 2D rotations. Now we look at how to perform rotation around a specified direction, $\nh$. This not only generalizes rotations around $\eh_i$ but is pivotal for transforming an object's configuration in three-dimensional space.
@@ -412,7 +412,7 @@ where \( \R_z(\psi) \) and \( \R_z(\phi) \) are the rotation matrices about the 
 
 \noindent In three-dimensional space, like the 321, 313 rotation sequence we have seen above, Euler angle rotations can be represented via a total of 12 distinct sequences. These sequences are derived from permutations of rotations about the three principal axes, $\eh_i$. For each sequence, the first and last rotations must be about different axes, and the middle rotation is about the axis not used in the first rotation. This rule leads to 12 unique combinations: 321, 323, 313, 312, 231, 213, 212, 232, 123, 132, 121, 131.
 
-We have seen so far that the rotation between two different coordinate basis $\eh_i$ and $\et_i$ can be achieved either by using Rodrigues' formula with $\nh, \phi$ in Eq.~\ref{eq:rodgForm} or through 3 Euler angles, $\{\psi, \theta, \phi\}$. In the former case of it might seem as though we require 4--degrees of freedom, $\{ n_i, \phi \}$, the unit-vector constraint of $\nh$ i.e. $||\nh||^2 = 1$, however, reduces the required variables to 3.
+We have seen so far that the rotation between two different coordinate basis $\eh_i$ and $\et_i$ can be achieved either by using Rodrigues' formula with $\nh, \phi$ in Eq.~\ref{eq:rodgForm} or through 3 Euler angles, $\{\psi, \theta, \phi\}$. In the former case of it might seem as though we require 4--degrees of freedom, $\{ n_i, \phi \}$, the unit-vector constraint of $\nh$ i.e. $||\nh||^2 = 1$, however, reduces the required variables to 3. The attached \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{\texttt{python}--code} has details of such an implementation.
 
 \subsubsection*{Connection between extrinsic and intrinsic transformations}
 
@@ -439,7 +439,7 @@ Let us consider three basis vectors $\ehx, \ehy, \ehz$ pointing along the $x, y,
   0 & 0 & 1
   \end{pmatrix}.
 \]
-\noindent Now, a vector $\v$ with components $\{ v_1, v_2, v_3 \}$ in the $\eh_i$ basis can be transformed to components $\{ \vts_1, \vts_2, \vts_3 \}$ in the rotated basis $\et_i$ using $\vt = \Q \v$  and the inverse operation can be done using  $\v = \Q^\T \vt$. The \texttt{python}--code for an implementation of this to transform the basis vectors is available \href{}{here}.
+\noindent Now, a vector $\v$ with components $\{ v_1, v_2, v_3 \}$ in the $\eh_i$ basis can be transformed to components $\{ \vts_1, \vts_2, \vts_3 \}$ in the rotated basis $\et_i$ using $\vt = \Q \v$  and the inverse operation can be done using  $\v = \Q^\T \vt$. The \texttt{python}--code for an implementation of this to transform the basis vectors is available \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{here}.
 
 \subsubsection*{Properties of rotation matrix in 3D}
 Apart from orthonormal property of rotation matrix (which is valid also in 3D), $\R$ has the following properties:
@@ -453,7 +453,7 @@ Apart from orthonormal property of rotation matrix (which is valid also in 3D), 
 \begin{figure}[t!]
   \centering
   \includegraphics[width=\textwidth]{figs/figGimbal.png}
-  \caption{Schematic showing the phenomenon of Gimbal locking occuring give the initial configuration is transformed by the 321 rotation sequence. This is achieved by rotating the axes, $\eh_i$ by $\R_z(\phi)$ followed by $\R_y(\pi/2)$ then by $\R_x(\psi)$. It is worth noting that Gimbal locking occurs with all the 12 Euler angle sequences discussed in sec.~\ref{sec:ex2int}.}
+  \caption{Schematic showing the phenomenon of Gimbal locking occuring given the initial configuration is transformed by the 321 rotation sequence. Such a locking situation arises when rotating the axis, $\eh_i$ by $\R_z(\phi)$ followed by $\R_y(\pi/2)$ then by $\R_x(\psi)$. It is worth noting that Gimbal locking occurs with all the 12 Euler angle sequences discussed in sec.~\ref{sec:ex2int}.}
   \label{fig:gimbLck}
 \end{figure}
 Gimbal is a structure used to provide pivoted support to an object so that the object can be oriented in any specified direction (see Fig.~\ref{fig:gimbLck}). Gimbal lock is a phenomenon in which the connection of the rings pointing towards three directions lose a degree-of-freedom as two rings align themselves. This can occur in a sequence of rotations where one rotation leads to an alignment of two axes. For example, in a yaw-pitch-roll system (321-rotation sequence) shown in , if the pitch angle (\( \theta \)) is rotated by \( \pm 90^\circ \), the yaw and the roll axes align. This alignment causes the loss of one degree of freedom, making it impossible to distinguish between yaw and roll motions.
@@ -601,7 +601,7 @@ Quaternions are a compact way to represent rotations as one needs only 4 compone
 
 \section{Conclusion}
 
-In summary, we have seen in this primer some of the properties of rotation in 2D and 3D with examples. We have seen how to rotate vectors, coordinate basis, and rigid objects. Finally, we introduced quaternions which are a compact way of representing rotations in 3D. The \texttt{python}--code accompanying this primer has the numerical implementation of the various methods discussed here. In the second part of this primer, we will extend ideas from this primer to curves. Rotations are intimately tied to curvature and twist about which we will explore in detail.
+In summary, we have seen in this primer some of the properties of rotation in 2D and 3D with examples. We have seen how to rotate vectors, coordinate basis, and rigid objects. Finally, we introduced quaternions which are a compact way of representing rotations in 3D. The \href{https://github.com/sgangaprasath/RotationTut/blob/main/Rotations.ipynb}{\texttt{python}--code} accompanying this primer has the numerical implementation of the various methods discussed here. In the second part of this primer, we will extend ideas from this primer to curves. Rotations are intimately tied to curvature and twist about which we will explore in detail there.
 
 \bibliographystyle{plain}
 \bibliography{reference.bib}
