@@ -99,7 +99,7 @@ Rotation is one of the fundamental operations of geometry. It provides a way to 
 
 
 \section{Introduction}
-In this two part series, we are interested in understanding the connection rotation and geometry of curves 3D. In the first part, we develop the notation and the mathematics behind rotations and in the second we will see how it forms the basis for geometry of curves in 3D. Though understanding geometry of 3D curves is our ultimate objective, we take the 2D route to make the concepts approachable before extending them to 3D. Besides its application to 3D curves, rotation has a variety of applications such as in the kinematics and dynamics of rigid bodies in physics (useful in mechanics of machines, robotics, and flight/rocket/satellite trajectories), animation \& graphic design and so on. In this primer, we start with the rotation operation in 2D, its representation using complex numbers and an example by applying it to transform a vector. We then move to rotations in 3D which is considerably complex than its 2D counterpart. In 3D, we introduce rotation about an arbitrary orientation, often called Rodrigues rotation, the ideas of intrinsic and extrinsic rotation of basis vectors and show how to transform between two arbitrary basis vectors. We end with a generalization of complex numbers to 3D i.e. the quaternions and use it to perform rotations. This primer borrows heavily from these \cite{hanson2005visualizing,vince2008geometric,vince2006mathematics} excellent approachable references.
+In this two part series, we are interested in understanding the connection between rotation and geometry of curves 3D. In the first part, we develop the notation and the mathematics behind rotations and in the second we will see how it forms the basis for geometry of curves in 3D. Though understanding geometry of 3D curves is our ultimate objective, we take the 2D route to make the concepts approachable before extending them to 3D. Besides its application to 3D curves, rotation has a variety of applications such as in the kinematics and dynamics of rigid bodies in physics (useful in mechanics of machines, robotics, and flight/rocket/satellite trajectories), animation \& graphic design and so on. In this primer, we start with the rotation operation in 2D, its representation using complex numbers and an example by applying it to transform a vector. We then move to rotations in 3D which is considerably complex than its 2D counterpart. In 3D, we introduce rotation about an arbitrary orientation, the ideas of intrinsic and extrinsic rotation of basis vectors and show how to transform between two arbitrary basis vectors. We end with a generalization of complex numbers to 3D i.e. the quaternions and use it to perform rotations. This primer borrows heavily from these \cite{hanson2005visualizing,vince2008geometric,vince2006mathematics} excellent approachable references.
 
 \section{Rotation in 2D}
 We will illustrate rotation in 2D with 3 examples: $(a)$ rotation of a vector represented in cartesian coordinate basis, $(b)$ rotation of the coordinate basis vectors (which will become relevant in sec.~\ref{sec:3D}), $(c)$ rotation of a triangle about the origin. We also show that the complex number system provides an intuitive and simple way to perform rotations. Most of what we see in this section is taught in high-school. Nevertheless, we leave it here to ensure completeness.
@@ -135,7 +135,7 @@ This result implies that the magnitudes of the complex numbers are multiplied, a
 
 \begin{egsBox}[label={egs:rot2Dex1}, float, floatplacement=t]{Rotating a point using complex number}
   \footnotesize
-  Consider a point $P$ represented by the complex number $z = 1 + i\sqrt{3}$ (which corresponds to the point $(1, \sqrt{3})$ in the 2D plane, forming an angle of $\dfrac{\pi}{3}$ with the positive real axis). To rotate this point by $120$ degrees (or $\dfrac{2\pi}{3}$ radians), we multiply it by $e^{i\frac{2\pi}{3}}$ (which represents a rotation of $\frac{2\pi}{3}$ radians in the complex plane).
+  Consider a point $P$ represented by the complex number $z = 1 + i\sqrt{3}$ (which corresponds to the point $(1, \sqrt{3})$ in the 2D plane, forming an angle of ${\pi}/{3}$ with the positive real axis). To rotate this point by $120$ degrees (or ${2\pi}/{3}$ radians), we multiply it by $e^{i\frac{2\pi}{3}}$ (which represents a rotation of ${2\pi}/{3}$ radians in the complex plane).
   The multiplication is as follows:
   \[
   z' = z \times e^{i\frac{2\pi}{3}} = (1 + i\sqrt{3}) \times e^{i\frac{2\pi}{3}} = (1 + i\sqrt{3}) \times \left(-\frac{1}{2} + i\frac{\sqrt{3}}{2}\right).
@@ -223,7 +223,7 @@ We will now derive the rotation matrix, $\R_i$ for $i = \{ x, y, z \}$ that perf
     0 & \sin(\psi) & \cos(\psi) 
     \end{pmatrix}.
     \]
-    Here positive values of $\psi$ denote rotation in the counter-clockwise direction when looking along $\eh_x$. This is shown schematically as the first step in extrinsic rotation in Fig.~\ref{fig:eulAng3D}.
+    Here positive values of $\psi$ denote rotation in the counter-clockwise direction when looking along $\eh_x$. This is shown schematically as the first step in intrinsic rotation in Fig.~\ref{fig:eulAng3D}.
 
     \item \textbf{Rotation about $\eh_y$}:
     Rotation about $\eh_y$ by an angle $\theta$ can be performed by the matrix $\R_y(\theta)$ given by
@@ -312,12 +312,12 @@ where we have used the short-hand notation $\c(\bullet) \equiv \cos(\bullet), \s
 \begin{egsBox}[label={egs:rot3Dex1}, float, floatplacement=t]{Rotation using Rodrigues' formula}
   
     \footnotesize
-    Consider a scenario where we have a vector $\mathbf{v} = (1, 0, 0)$. Our goal is to rotate this vector by an angle of $\frac{\pi}{4}$ radians around a unit vector $\mathbf{n} = \frac{1}{\sqrt{3}}(1, 1, 1)$.
+    Consider a scenario where we have a vector $\mathbf{v} = (1, 0, 0)$. Our goal is to rotate this vector by an angle of $\pi/4$ radians around a unit vector $\mathbf{n} = (1, 1, 1)/{\sqrt{3}}$.
 
-    First, we calculate the components of the rotation matrix $\R(\phi, \nh)$ using Rodrigues' formula. With $\phi = \frac{\pi}{4}$ and $\nh = \frac{1}{\sqrt{3}}(1, 1, 1)$, the rotation matrix is computed as:
+    First, we calculate the components of the rotation matrix $\R(\phi, \nh)$ using Rodrigues' formula. With $\phi = {\pi}/{4}$ and $\nh = (1, 1, 1)/{\sqrt{3}}$, the rotation matrix is computed as:
 
     \[
-    \R(\frac{\pi}{4}, \nh) = \frac{1}{2} \begin{pmatrix}
+    \R \Big( \frac{\pi}{4}, \nh \Big) = \frac{1}{2} \begin{pmatrix}
         1+\frac{1}{\sqrt{3}} & 1-\frac{1}{\sqrt{3}} & 1-\frac{1}{\sqrt{3}} \\
         1-\frac{1}{\sqrt{3}} & 1+\frac{1}{\sqrt{3}} & 1-\frac{1}{\sqrt{3}} \\
         1-\frac{1}{\sqrt{3}} & 1-\frac{1}{\sqrt{3}} & 1+\frac{1}{\sqrt{3}}
@@ -326,7 +326,7 @@ where we have used the short-hand notation $\c(\bullet) \equiv \cos(\bullet), \s
 
     Applying this matrix to the vector $\mathbf{v}$, we find the rotated vector $\vt$ is,
     \[
-    \vt = \R(\frac{\pi}{4}, \nh) \mathbf{v} = \frac{1}{2} \begin{pmatrix}
+    \vt = \R \Big( \frac{\pi}{4}, \nh \Big) \mathbf{v} = \frac{1}{2} \begin{pmatrix}
         1+\frac{1}{\sqrt{3}} \\
         1-\frac{1}{\sqrt{3}} \\
         1-\frac{1}{\sqrt{3}}
@@ -338,19 +338,19 @@ where we have used the short-hand notation $\c(\bullet) \equiv \cos(\bullet), \s
 \subsection{Extrinsic rotation from \texorpdfstring{$\eh_i$}{ehi} basis to \texorpdfstring{$\et_i$}{eti} basis}\label{sec:ex2int}
 In this section we look at one of the most important functions of rotations, which is to transform a coordinate axes from an initial configuration to a target configuration. As we have mentioned briefly earlier and shown schematically in Fig.~\ref{fig:eulAng3D}, rigid objects' orientation or coordinate basis can be transformed from initial to target configuration by either using a global fixed reference frame, referred to as extrinsic rotation or by using the local reference frame which transforms with every rotation operation, referred to as intrinsic form.
 
-We will first look at the more intuitive extrinsic form of rotation between two coordinate basis denoted by $A$, the initial configuration and $B$, the target configuration shown in Fig.~\ref{fig:eulAng3D}. The global coordinate basis is $A$ which is aligned with global axes $\eh_i$ and it must be rotated to reach target frame $B$ with axes $\et_i$. We can do this by performing three rotations: first around the first axis of frame $A$ that is rotation about $\eh_z$, followed by rotation about $\eh_y$ and lastly by rotating about $\eh_x$. As it must be clear, this rotation sequence is performed in the extrinsic form as the global coordinate basis, $\eh_i$ is used for the transformation. It is important to note that this sequence of rotations, starting with the global $x$-axis, followed by the global $y$-axis, and then the global $z$-axis, has equivalent intrinsic rotations. In order to do this in intrinsic form, in Fig.~\ref{fig:eulAng3D} we show that we can traverse from $A$ by first rotating with respect to $\eh_x$ to reach an intermediate frame $A'$ (with axes $\{ \eh'_x, \eh'_y, \eh_z \}$), and second rotation around $\eh'_y$ leading to frame $A''$ (with axes $\{ \eh''_x, \eh''_y, \eh''_z \}$), and third rotation around $\eh''_z$ to arrive at frame $B$.
+We will first look at the more intuitive extrinsic form of rotation between two coordinate basis denoted by $A$, the initial configuration and $B$, the target configuration shown in Fig.~\ref{fig:eulAng3D}. The global coordinate basis is $A$ which is aligned with global axes $\eh_i$ and it must be rotated to reach target frame $B$ with axes $\et_i$. We can do this by performing three rotations: first around the first axis of frame $A$ that is rotation about $\eh_z$, followed by rotation about $\eh_y$ and lastly by rotating about $\eh_x$. As it must be clear, this rotation sequence is performed in the extrinsic form as the global coordinate basis, $\eh_i$ is used for the transformation. It is important to note that this sequence of rotations, starting with the global $z$-axis, followed by the global $y$-axis, and then the global $x$-axis, has equivalent intrinsic rotations. In order to do this in intrinsic form, in Fig.~\ref{fig:eulAng3D} we show that we can traverse from $A$ by first rotating with respect to $\eh_x$ to reach an intermediate frame $A'$ (with axes $\{ \eh'_x, \eh'_y, \eh_z \}$), and second rotation around $\eh'_y$ leading to frame $A''$ (with axes $\{ \eh''_x, \eh''_y, \eh''_z \}$), and third rotation around $\eh''_z$ to arrive at frame $B$.
 
 This particular sequence of rotation starting with the global $z$-axis followed by global $y$-axis then by global $x$-axis is called 321 rotation. The 321 rotation can be represented as composition of rotation matrices, $\R_i$ we have seen in the earlier section. We can perform the rotation about global $z, y, x$-axes by angles $\psi, \theta, \phi$ using product of 3 $\R_i$ matrices given by,
 \[
   \R (\psi, \theta, \phi) = \R_x(\phi) \R_y(\theta) \R_z(\psi).
 \]
 
-\noindent In the context of 3D rotations, yaw (\( \psi \)), pitch(\( \theta \)), and roll(\( \phi \)) are commonly used terms for 321 rotation sequence:
+\noindent In the context of 3D rotations, yaw (\( \psi \)), pitch(\( \theta \)), and roll(\( \phi \)) are commonly used terms for 321 rotation sequence,
 \[
   \R_{\text{final}} (\psi, \theta, \phi) = 
 \begin{pmatrix} 
-    \cos(\psi) & -\sin(\psi) & 0 \\
-    \sin(\psi) & \cos(\psi) & 0 \\
+    \cos(\phi) & -\sin(\phi) & 0 \\
+    \sin(\phi) & \cos(\phi) & 0 \\
     0 & 0 & 1 
 \end{pmatrix}
 \begin{pmatrix}
@@ -360,12 +360,12 @@ This particular sequence of rotation starting with the global $z$-axis followed 
 \end{pmatrix}
 \begin{pmatrix} 
     1 & 0 & 0 \\
-    0 & \cos(\phi) & -\sin(\phi) \\
-    0 & \sin(\phi) & \cos(\phi)
+    0 & \cos(\psi) & -\sin(\psi) \\
+    0 & \sin(\psi) & \cos(\psi)
 \end{pmatrix}.
 \]
 
-\noindent This results in the following matrix for \(\R_{\text{final}}\):
+\noindent A subtle point worth mentioning is that we have taken some freedom in defining yaw (\( \psi \)), pitch(\( \theta \)), and roll(\( \phi \)) in the case of an extrinsic rotation sequence here, however it is conventionally used in the context of an intrinsic rotation. This results in the following matrix,
 \[
   \R_{\text{final}} (\psi, \theta, \phi) = 
 \begin{pmatrix}
@@ -377,7 +377,7 @@ This particular sequence of rotation starting with the global $z$-axis followed 
 
 \begin{egsBox}[label={egs:rot3Dex1}, float, floatplacement=t]{Rotating from initial basis $\eh_i$ to target basis $\et_i$}
   \footnotesize
-  Consider a scenario where we need to rotate a coordinate system from an initial basis $\eh_i = \{\eh_x, \eh_y, \eh_z\}$ to a target basis $\et_i = \{\et_x, \et_y, \et_z\}$. Let's assume the rotation involves a yaw of $\frac{\pi}{6}$ , a pitch of $\frac{\pi}{4}$, and a roll of $\frac{\pi}{3}$. Using the 321 rotation sequence, the final rotation matrix is calculated as follows:
+  Consider a scenario where we need to rotate a coordinate system from an initial basis $\eh_i = \{\eh_x, \eh_y, \eh_z\}$ to a target basis $\et_i = \{\et_x, \et_y, \et_z\}$. Let's assume the rotation involves a yaw of $\dfrac{\pi}{6}$ , a pitch of $\dfrac{\pi}{4}$, and a roll of $\dfrac{\pi}{3}$. Using the 321 rotation sequence, the final rotation matrix is calculated as follows:
  \[
   \R_{\text{final}} (\psi, \theta, \phi) = \begin{pmatrix}
 \c(\frac{\pi}{6}) \c(\frac{\pi}{4}) & \s(\frac{\pi}{3}) \s(\frac{\pi}{4}) \c(\frac{\pi}{6}) - \s(\frac{\pi}{6}) \c(\frac{\pi}{3}) & \s(\frac{\pi}{3}) \s(\frac{\pi}{6}) + \s(\frac{\pi}{4}) \c(\frac{\pi}{3}) \c(\frac{\pi}{6}) \\
@@ -418,7 +418,7 @@ We have seen so far that the rotation between two different coordinate basis $\e
 
 We have seen that in the extrinsic form, each rotation is performed with respect to a fixed coordinate basis, $\eh_i$. These rotations are easier to visualize as they relate to a stationary frame of reference. In contrast, intrinsic rotations in Fig.~\ref{fig:eulAng3D} are performed with respect to the rotating coordinate system. The key to connection between extrinsic and intrinsic transformations lies in the order of applied rotations. An extrinsic rotation sequence can be converted to an intrinsic sequence by reversing the order of rotations and vice versa. This is because rotating an object first about one axis and then about another in a fixed coordinate system (extrinsic) is equivalent to rotating it about the second axis and then the first in its own coordinate system (intrinsic).
 
-For example, an extrinsic rotation sequence about the 123 ($\eh_z \rightarrow \eh_y \rightarrow \eh_x$) is equivalent to an intrinsic rotation sequence 321 ($\eh_x \rightarrow \eh'_y \rightarrow \eh''_x$). Though the order of applied sequence is reversed, the rotation matrix for both these sequences is the same. This relationship allows for the translation of a series of rotations from one perspective to another. In order to gain a deeper understanding of this connection, we refer the reader to this \href{https://dominicplein.medium.com/extrinsic-intrinsic-rotation-do-i-multiply-from-right-or-left-357c38c1abfd}{link}.
+For example, an extrinsic rotation sequence about the 123 ($\eh_x \rightarrow \eh_y \rightarrow \eh_z$) is equivalent to an intrinsic rotation sequence 321 ($\eh_z \rightarrow \eh'_y \rightarrow \eh''_x$). Though the order of applied sequence is reversed, the rotation matrix for both these sequences is the same. This relationship allows for the translation of a series of rotations from one perspective to another. In order to gain a deeper understanding of this connection, we refer the reader to this \href{https://dominicplein.medium.com/extrinsic-intrinsic-rotation-do-i-multiply-from-right-or-left-357c38c1abfd}{link}.
 
 \subsubsection*{Vector components in different coordinate basis}
 In sec.~\ref{sec:VecComp2D} we saw that the vector components in 2D transform under the rule, $\v = \Q^\T \vt$ and $\vt = \Q \v$. This transformation is valid also in 3D where the matrix $\Q = \{ \et_x, \et_y, \et_z \}$, which can be written explicitly as
